@@ -2,13 +2,20 @@ package ru.redsoft.warships.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.redsoft.warships.repository.WarshipsRepository;
+import ru.redsoft.warships.exchange.response.WarshipResponse;
+import ru.redsoft.warships.mapper.WarshipMapper;
+import ru.redsoft.warships.repository.WarshipRepository;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class WarshipsService {
+public class WarshipService {
 
-    private final WarshipsRepository warshipsRepository;
+    private final WarshipMapper warshipMapper;
+    private final WarshipRepository warshipRepository;
 
-    public
+    public List<WarshipResponse> findAll() {
+        return warshipMapper.map(warshipRepository.findAll());
+    }
 }

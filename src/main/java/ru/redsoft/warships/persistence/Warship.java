@@ -16,7 +16,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Warships {
+public class Warship {
 
     @Id
     @Column(nullable = false)
