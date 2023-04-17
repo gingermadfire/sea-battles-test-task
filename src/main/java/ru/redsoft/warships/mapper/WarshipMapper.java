@@ -1,11 +1,13 @@
 package ru.redsoft.warships.mapper;
 
+import org.springframework.stereotype.Component;
 import ru.redsoft.warships.exchange.response.WarshipResponse;
 import ru.redsoft.warships.persistence.Warship;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class WarshipMapper {
 
     public WarshipResponse map(Warship warship) {
