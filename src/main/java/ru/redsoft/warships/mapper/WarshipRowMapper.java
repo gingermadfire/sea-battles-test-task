@@ -1,6 +1,7 @@
 package ru.redsoft.warships.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 import ru.redsoft.warships.persistence.Warship;
 import ru.redsoft.warships.persistence.WarshipClass;
 
@@ -8,8 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+@Component
 public class WarshipRowMapper implements RowMapper<Warship> {
-
 
     @Override
     public Warship mapRow(ResultSet rs, int rowNum) throws SQLException {
