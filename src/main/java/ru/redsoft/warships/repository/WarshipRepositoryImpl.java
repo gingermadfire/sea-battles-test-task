@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class WarshipRepositoryImpl implements WarshipRepository {
 
+    private final WarshipRowMapper warshipRowMapper;
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
@@ -27,7 +28,7 @@ public class WarshipRepositoryImpl implements WarshipRepository {
 
     @Override
     public List<Warship> findAll() {
-        return jdbcTemplate.query("select * from WARSHIPS", new WarshipRowMapper());
+        return jdbcTemplate.query("select * from WARSHIPS", warshipRowMapper);
     }
 
 

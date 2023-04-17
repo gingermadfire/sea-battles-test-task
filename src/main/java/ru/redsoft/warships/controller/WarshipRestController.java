@@ -11,7 +11,7 @@ import ru.redsoft.warships.service.WarshipService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/warship")
+@RequestMapping("/api/v1/warships")
 @RequiredArgsConstructor
 public class WarshipRestController {
 
