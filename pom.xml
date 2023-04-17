@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.redsoft</groupId>
-    <artifactId>warships</artifactId>
+    <artifactId>sea-battles</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>warships</name>
     <description>warships</description>
