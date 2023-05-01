@@ -14,6 +14,8 @@ import java.time.Instant;
 @AllArgsConstructor
 public class WarshipResponse {
 
+    private Long id;
+
     private String name;
 
     private WarshipClass warshipClass;

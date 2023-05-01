@@ -12,6 +12,7 @@ public class WarshipMapper {
 
     public WarshipResponse map(Warship warship) {
         return new WarshipResponse(
+                warship.getId(),
                 warship.getName(),
                 warship.getWarshipClass(),
                 warship.getCommissionDate(),

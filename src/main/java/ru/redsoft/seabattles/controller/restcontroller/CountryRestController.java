@@ -1,4 +1,4 @@
-package ru.redsoft.seabattles.controller;
+package ru.redsoft.seabattles.controller.restcontroller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

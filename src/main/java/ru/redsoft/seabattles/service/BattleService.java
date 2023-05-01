@@ -6,7 +6,7 @@ import ru.redsoft.seabattles.exception.NotFoundException;
 import ru.redsoft.seabattles.exchange.request.BattleRequest;
 import ru.redsoft.seabattles.exchange.response.BattleResponse;
 import ru.redsoft.seabattles.mapper.BattleMapper;
-import ru.redsoft.seabattles.repository.BattleRepositoryImpl;
+import ru.redsoft.seabattles.repository.implementation.BattleRepositoryImpl;
 
 import java.util.List;
 
@@ -16,6 +16,11 @@ public class BattleService {
 
     private final BattleMapper battleMapper;
     private final BattleRepositoryImpl battleRepository;
+
+    public BattleResponse findByName(String name) {
+        return battleMapper.map(battleRepository.findByName(name)
+                .orElseThrow(() -> new NotFoundException("Battle nof found")));
+    }
 
     public List<BattleResponse> findAll() {
         return battleMapper.map(battleRepository.findAll());

@@ -3,4 +3,6 @@ spring:
     username: ${ENV_DATABASE_USERNAME}
     password: ${ENV_DATABASE_PASSWORD}
     driver-class-name: org.firebirdsql.jdbc.FBDriver
-    url: ${ENV_DATABASE_URL:jdbc:firebirdsql://localhost:3050/${project.basedir}/WARSHIPS.FDB}
+    url: ${ENV_DATABASE_URL:jdbc:firebirdsql://localhost:3050/${project.basedir}/SEA-BATTLES.FDB}
+  thymeleaf:
+    check-template-location: false

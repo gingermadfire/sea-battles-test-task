@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface BattleRepository {
 
+    Optional<Battle> findByName(String name);
+
     List<Battle> findAll();
 
     Optional<Battle> save(Battle battle);

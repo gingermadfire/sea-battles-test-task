@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.redsoft.seabattles.exchange.response.CountryResponse;
 import ru.redsoft.seabattles.mapper.CountryMapper;
-import ru.redsoft.seabattles.repository.CountryRepositoryImpl;
+import ru.redsoft.seabattles.repository.implementation.CountryRepositoryImpl;
 
 import java.util.List;
 
