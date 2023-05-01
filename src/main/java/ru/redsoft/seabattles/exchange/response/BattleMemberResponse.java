@@ -1,22 +1,23 @@
 package ru.redsoft.seabattles.exchange.response;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.Instant;
+import ru.redsoft.seabattles.persistence.BattleResultForWarship;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BattleResponse {
+public class BattleMemberResponse {
+
+    private Long id;
+
+    private Long warshipId;
 
     private String battleName;
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
-    private Instant battleDate;
+    private BattleResultForWarship resultForWarship;
 
 }

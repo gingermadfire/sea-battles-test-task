@@ -1,4 +1,4 @@
-package ru.redsoft.seabattles.repository;
+package ru.redsoft.seabattles.repository.implementation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 import ru.redsoft.seabattles.mapper.BattleRowMapper;
 import ru.redsoft.seabattles.persistence.Battle;
+import ru.redsoft.seabattles.repository.BattleRepository;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -19,7 +20,7 @@ public class BattleRepositoryImpl implements BattleRepository {
     private final BattleRowMapper battleRowMapper;
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
-    private Optional<Battle> findByName(String battleName) {
+    public Optional<Battle> findByName(String battleName) {
         SqlParameterSource parameterSource = new MapSqlParameterSource().addValue("battleName", battleName);
 
         return Optional.ofNullable(jdbcTemplate.queryForObject(
@@ -40,7 +41,7 @@ public class BattleRepositoryImpl implements BattleRepository {
                 .addValue("battleName", battle.getBattleName())
                 .addValue("battleDate", Timestamp.from(battle.getBattleDate()));
 
-        jdbcTemplate.update("insert into BATTLES values(:battleName, :battleDate)", parameterSource);
+        jdbcTemplate.update("update or insert into BATTLES values (:battleName, :battleDate)", parameterSource);
 
         return this.findByName(battle.getBattleName());
     }

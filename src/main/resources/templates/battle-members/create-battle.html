@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Battle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="http:///ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+</head>
+<body>
+<div class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center " style="max-width: 1000px">
+
+        <form id="create-battle">
+            <label>Warship name:</label>
+            <select class="form-select" name="warshipId" id="warships">
+                <script>
+                    $.get("/api/v1/warships", function (data) {
+                        var textToInsert = '';
+                        $.each(data, function (row, rowdata) {
+                            textToInsert += '<option value="' + rowdata.id + '">' + rowdata.name + '</option>';
+                        });
+                        $("#warships").append(textToInsert);
+                    }, 'json');
+                </script>
+            </select>
+
+            <div class="mb-3">
+                <label>Battle name:</label>
+                <input name="battleName" type="text" placeholder="Enter battle name"/>
+            </div>
+
+            <div class="mb-3">
+                <label>Battle date:</label>
+                <input name="battleDate" type="date" placeholder="enter battle date"/>
+            </div>
+
+            <label>Battle type:</label>
+            <select class="form-select" name="resultForWarship">
+                <option value="SURVIVED">SURVIVED</option>
+                <option value="SUNKEN">SUNKEN</option>
+                <option value="DAMAGED">DAMAGED</option>
+            </select>
+            <br>
+            <a href="/main-page"/>
+            <button type="submit" class="btn btn-outline-success position-relative start-100">Save</button>
+            </a>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+        crossorigin="anonymous"></script>
+<script>
+    const form = document.getElementById('create-battle');
+
+    form.addEventListener('submit', createBattle);
+
+    function createBattle(event) {
+        event.preventDefault();
+        let myFormData = new FormData(event.target);
+        const body = {};
+        myFormData.forEach((value, key) => (body[key] = value));
+
+        let req = new XMLHttpRequest()
+
+        req.open("POST", "/api/v1/battle-members")
+        req.setRequestHeader("Content-Type", "application/json")
+        req.send(JSON.stringify(body))
+    }
+</script>
+</body>
+</html>

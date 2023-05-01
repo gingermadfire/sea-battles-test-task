@@ -1,10 +1,11 @@
-package ru.redsoft.seabattles.repository;
+package ru.redsoft.seabattles.repository.implementation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.redsoft.seabattles.mapper.CountryRowMapper;
 import ru.redsoft.seabattles.persistence.Country;
+import ru.redsoft.seabattles.repository.CountryRepository;
 
 import java.util.List;
 
